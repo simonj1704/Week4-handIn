@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Exercise-4</h1>
+
+    <select id="car-selector">
+      <!-- Options will be populated by JavaScript -->
+    </select>
+    <h2>Selected Brand</h2>
+    <h4 id="car-make"></h4>
+
+    <div style="margin: 1em">
+      <a href="index.html">Back</a>
+    </div>
+
+    <h3>Reflections</h3>
+    <p>Its a good idea to use the select element when you have some choices that need to be in a specific way.</p>
+    <p>Because the user cannot write their own thing.</p>
+
+    <script>
+      const cars = ["Ford", "WW", "Toyota", "Volvo"]; //Assume this was fetched from the backend
+
+      function makeOptions() {
+        const options = cars
+          .map((car) => `<option value="${car}">${car}</option>`)
+          .join("");
+        document.getElementById("car-selector").innerHTML = options;
+      }
+
+      function showSelected() {
+        const selected = document.getElementById("car-selector").value;
+        document.getElementById("car-make").innerHTML = selected;
+      }
+
+      makeOptions();
+      showSelected();
+    </script>
+  </body>
+</html>
