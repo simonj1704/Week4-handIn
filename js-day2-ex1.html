@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Exercise-1</h1>
+    <div id="d1" style="width: 100px; margin: 1px">&nbsp;</div>
+    <div id="d2" style="width: 100px; margin: 1px">&nbsp;</div>
+    <div id="d3" style="width: 100px; margin: 1px">&nbsp;</div>
+    <button onclick="changeColor()">Change color</button>
+
+    <div style="margin: 1em">
+        <a href="index.html">Back</a>
+    </div>
+
+    <h3>Reflections</h3>
+    <p>I am able to use forEach with querySelectorAll when using it as a intermediate function</p>
+
+    <script>
+        document.querySelectorAll("div").forEach((div) => {
+            if (div.id.length > 0){
+            div.style.backgroundColor = "yellow";
+            }
+        });
+
+        function changeColor(){
+            const divs = document.querySelectorAll("div");
+            divs[0].style.backgroundColor = "Orange";
+            divs[1].style.backgroundColor = "green";
+            divs[2].style.backgroundColor = "Cyan";
+        }
+    </script>
+  </body>
+</html>
