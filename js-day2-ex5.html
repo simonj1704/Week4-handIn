@@ -27,6 +27,13 @@
       <tbody id="tbody"></tbody>
     </table>
 
+    <div>
+        <label for="filter-price">Price &nbsp;</label>
+        <input id="filter-price"></input>
+        <button id="btn-filter-price" class="btn btn-outline-dark">Price less than</button>
+        <button id="btn-clear-filter" class="btn btn-outline-dark">Clear Filter</button>
+    </div>
+
     <div style="margin: 1em">
       <a href="index.html">Back</a>
     </div>
@@ -56,6 +63,23 @@
         document.getElementById("tbody").innerHTML = table;
       }
 
+      function filterPrice(carsArray, price) {
+        const filteredCars = carsArray.filter((car) => car.price < price);
+        maketable(filteredCars);
+      }
+
+        function clearFilter(carsArray) {
+            maketable(carsArray);
+        }
+
+      document.getElementById("btn-filter-price").addEventListener("click", () => {
+        const price = document.getElementById("filter-price").value;
+        filterPrice(cars, price);
+      });
+
+      document.getElementById("btn-clear-filter").addEventListener("click", () => {
+        clearFilter(cars);
+      });
       maketable(cars);
     </script>
   </body>
