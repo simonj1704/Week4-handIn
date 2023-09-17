@@ -17,7 +17,7 @@
     <table class="table" style="height: 20em">
       <thead id="header">
         <tr id="headers">
-          <th id="header-Id">ID</th>
+          <th id="header-id">ID</th>
           <th id="header-year">Year</th>
           <th id="header-make">Make</th>
           <th id="header-model">Model</th>
@@ -28,10 +28,14 @@
     </table>
 
     <div>
-        <label for="filter-price">Price &nbsp;</label>
-        <input id="filter-price"></input>
-        <button id="btn-filter-price" class="btn btn-outline-dark">Price less than</button>
-        <button id="btn-clear-filter" class="btn btn-outline-dark">Clear Filter</button>
+      <label for="filter-price">Price &nbsp;</label>
+      <input id="filter-price" />
+      <button id="btn-filter-price" class="btn btn-outline-dark">
+        Price less than
+      </button>
+      <button id="btn-clear-filter" class="btn btn-outline-dark">
+        Clear Filter
+      </button>
     </div>
 
     <div style="margin: 1em">
@@ -68,29 +72,63 @@
         maketable(filteredCars);
       }
 
-        function clearFilter(carsArray) {
-            maketable(carsArray);
-        }
+      function clearFilter(carsArray) {
+        maketable(carsArray);
+      }
 
-        function sortByHeader(carsArray, header) {
-            if (header == "ID"){}
-            const sortedCars = carsArray.sort((a, b) => a[header] - b[header]);
-            maketable(sortedCars);
-        }
+      let sortOrder = 1;
 
-        document.getElementById("headers").addEventListener("click", () => {        
-            const header = event.target.id.split("-")[1];
-            sortByHeader(cars, header);
+      function sortByHeader(carsArray, header) {
+        const sortedCars = carsArray.sort(
+          (a, b) => (a[header] - b[header]) * sortOrder
+        );
+        sortOrder *= -1;
+        maketable(sortedCars);
+      }
+
+      function sortByMake(carsArray) {
+        event.stopPropagation();
+        const sortedCars = carsArray.sort(
+          (a, b) => a.make.localeCompare(b.make) * sortOrder
+        );
+        sortOrder *= -1;
+        maketable(sortedCars);
+      }
+
+      function sortByModel(carsArray) {
+        event.stopPropagation();
+        const sortedCars = carsArray.sort(
+          (a, b) => a.model.localeCompare(b.model) * sortOrder
+        );
+        sortOrder *= -1;
+        maketable(sortedCars);
+      }
+
+      document.getElementById("header-make").addEventListener("click", () => {
+        sortByMake(cars);
+      });
+
+      document.getElementById("header-model").addEventListener("click", () => {
+        sortByModel(cars);
+      });
+
+      document.getElementById("headers").addEventListener("click", () => {
+        const header = event.target.id.split("-")[1];
+        sortByHeader(cars, header);
+      });
+
+      document
+        .getElementById("btn-filter-price")
+        .addEventListener("click", () => {
+          const price = document.getElementById("filter-price").value;
+          filterPrice(cars, price);
         });
 
-      document.getElementById("btn-filter-price").addEventListener("click", () => {
-        const price = document.getElementById("filter-price").value;
-        filterPrice(cars, price);
-      });
-
-      document.getElementById("btn-clear-filter").addEventListener("click", () => {
-        clearFilter(cars);
-      });
+      document
+        .getElementById("btn-clear-filter")
+        .addEventListener("click", () => {
+          clearFilter(cars);
+        });
       maketable(cars);
     </script>
   </body>
