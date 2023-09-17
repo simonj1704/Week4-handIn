@@ -17,11 +17,11 @@
     <table class="table" style="height: 20em">
       <thead id="header">
         <tr id="headers">
-          <th>ID</th>
-          <th id>Year</th>
-          <th>Make</th>
-          <th>Model</th>
-          <th>Price</th>
+          <th id="header-Id">ID</th>
+          <th id="header-year">Year</th>
+          <th id="header-make">Make</th>
+          <th id="header-model">Model</th>
+          <th id="header-price">Price</th>
         </tr>
       </thead>
       <tbody id="tbody"></tbody>
@@ -71,6 +71,17 @@
         function clearFilter(carsArray) {
             maketable(carsArray);
         }
+
+        function sortByHeader(carsArray, header) {
+            if (header == "ID"){}
+            const sortedCars = carsArray.sort((a, b) => a[header] - b[header]);
+            maketable(sortedCars);
+        }
+
+        document.getElementById("headers").addEventListener("click", () => {        
+            const header = event.target.id.split("-")[1];
+            sortByHeader(cars, header);
+        });
 
       document.getElementById("btn-filter-price").addEventListener("click", () => {
         const price = document.getElementById("filter-price").value;
