@@ -62,8 +62,12 @@ async function findCarById(id) {
   try {
     const data = await fetch(url + "cars/" + id).then(handleHttpErrors);
     console.log(data);
+    document.getElementById("found-car").style.color = "black";
     document.getElementById("found-car").innerText = JSON.stringify(data, null, 2);
   } catch (err) {
+    const message = document.getElementById("found-car");
+    message.innerText = "No car found with that ID";
+    message.style.color = "red";
     console.error(err);
   }
 }
@@ -111,6 +115,7 @@ async function editCar(id) {
     model: form.model.value,
     pricePrDay: parseFloat(form.pricePrDay.value),
     bestDiscount: parseInt(form.bestDiscount.value),
+    id: parseInt(id),
   };
 
   console.log(newCar)
@@ -119,11 +124,19 @@ async function editCar(id) {
   try {
     const data = await fetch(url + "cars/" + id, options).then(handleHttpErrors);
     console.log(data);
-    document.getElementById("edit-car").reset();
+    
+  } catch (err) {
+    console.error(err);
+  }
+  
+  try {
+    const data = await fetch(url + "cars/" + id).then(handleHttpErrors);
+    console.log(data);
     document.getElementById("edited-car").innerText = JSON.stringify(data, null, 2);
   } catch (err) {
     console.error(err);
   }
+  document.getElementById("edit-car").innerHTML = "";
 }
 
 
