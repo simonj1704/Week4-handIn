@@ -30,9 +30,8 @@
       <div class="row row-height-30">
         <!--########################  SHOW ALL CARS OR MEMBERS ########################-->
         <div class="col">
-          <h3>Show all Members or Cars</h3>
+          <h3>Show all Cars</h3>
           <button id="btn-get-all-cars">Get all Cars</button>
-          <button id="btn-get-all-members">Get all Members</button>
           <p>Show what you find here</p>
           <table style="display: block;" class="table">
             <thead id="thead">
@@ -44,34 +43,57 @@
 
         <!--########################  FIND A SINGLE CAR OR MEMBER ########################-->
         <div class="col">
-          <h3>Find a single Member or Car</h3>
+          <h3>Find a single Car</h3>
           <label for="text-for-id">Id</label>&nbsp;<input id="text-for-id" />
           <button id="btn-find-car">Find Car</button>
-          <button id="btn-find-member">Find Member</button>
           <p id="found-car">Show what you find here</p>
         </div>
       </div>
       <div class="row row-height-55">
         <!--########################  ADD A CAR OR MEMBER ########################-->
         <div class="col">
-          <h3>Add a Car or a Member</h3>
+          <h3>Add a Car</h3>
+          <form id="carForm">
+            <div class="row mb-3">
+              <label for="brand" class="col-sm-2 col-form-label">Brand</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="brand" name="brand">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="model" class="col-sm-2 col-form-label">Model</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="model" name="model">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="pricePrDay" class="col-sm-2 col-form-label">Price Per Day</label>
+              <div class="col-sm-10">
+                <input type="number" step="0.01" class="form-control" id="pricePrDay" name="pricePrDay">
+              </div>
+            </div>
+            <div class="row mb-3">
+              <label for="bestDiscount" class="col-sm-2 col-form-label">Best Discount</label>
+              <div class="col-sm-10">
+                <input type="number" class="form-control" id="bestDiscount" name="bestDiscount">
+              </div>
+            </div>
+          </form>
           <button id="btn-add-car">Submit new Car</button>
-          <button id="btn-add-member">Submit new Member</button>
-          <p>Show returned data, if any</p>
-          <p>Use one of the two GET pages to verify that "something" was added</p>
-          <p id="added-item"></p>
+          <p id="added-car"></p>
         </div>
 
         <!--########################  EDIT A CAR OR MEMBER ########################-->
         <div class="col">
-          <h3>Edit a Car or a Member</h3>
+          <h3>Edit a Car</h3>
           <label for="text-for-id2">Id</label>&nbsp;<input id="text-for-id2" type="text"/>
           <button id="btn-find-car2">Find Car to edit</button>
-          <button id="btn-find-member2">Find Member to edit</button>
           <p>Show what you find here, and let users edit fields</p>
+          <form id="edit-car">
+          </form>
           <p>......</p>
-          <button>Submit edited item</button>
-          <p>Use one of the two GET pages to verify that "something" was added</p>
+          <button id="btn-add-car-edit">Submit edited item</button>
+          <p id="edited-car"></p>
         </div>
       </div>
     </div>
