@@ -31,19 +31,14 @@
         <!--########################  SHOW ALL CARS OR MEMBERS ########################-->
         <div class="col">
           <h3>Show all Members or Cars</h3>
-          <button id="btn-get-all">Get all</button>
+          <button id="btn-get-all-cars">Get all Cars</button>
+          <button id="btn-get-all-members">Get all Members</button>
           <p>Show what you find here</p>
           <table style="display: block;" class="table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Price pr day</th>
-                <th>Best Discount</th>
-              </tr>
+            <thead id="thead">
             </thead>
             <tbody style="display:block;max-height: 8em;overflow-y: scroll;" id="tbody">
+            </tbody>
           </table>
         </div>
 
@@ -51,7 +46,8 @@
         <div class="col">
           <h3>Find a single Member or Car</h3>
           <label for="text-for-id">Id</label>&nbsp;<input id="text-for-id" />
-          <button id="btn-find-car">Find</button>
+          <button id="btn-find-car">Find Car</button>
+          <button id="btn-find-member">Find Member</button>
           <p id="found-car">Show what you find here</p>
         </div>
       </div>
@@ -59,16 +55,19 @@
         <!--########################  ADD A CAR OR MEMBER ########################-->
         <div class="col">
           <h3>Add a Car or a Member</h3>
-          <button>Submit new item</button>
+          <button id="btn-add-car">Submit new Car</button>
+          <button id="btn-add-member">Submit new Member</button>
           <p>Show returned data, if any</p>
           <p>Use one of the two GET pages to verify that "something" was added</p>
+          <p id="added-item"></p>
         </div>
 
         <!--########################  EDIT A CAR OR MEMBER ########################-->
         <div class="col">
           <h3>Edit a Car or a Member</h3>
-          <label for="text-for-id2">Id</label>&nbsp;<input id="text-for-id2" />
-          <button>Find item to edit</button>
+          <label for="text-for-id2">Id</label>&nbsp;<input id="text-for-id2" type="text"/>
+          <button id="btn-find-car2">Find Car to edit</button>
+          <button id="btn-find-member2">Find Member to edit</button>
           <p>Show what you find here, and let users edit fields</p>
           <p>......</p>
           <button>Submit edited item</button>
